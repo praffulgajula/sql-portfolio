@@ -46,7 +46,26 @@ group by city;
 
 
 --Problems Try to tried  to answer using SQL 
-1- write a query to print top 5 cities with highest spends and their percentage contribution of total credit card spends 
+-- 1- write a query to print top 5 cities with highest spends and their percentage contribution of total credit card spends
+
+Apporach: 
+a. TOP 5 CITIES WITH HIGHEST SPENDS 
+b. Find Total amount
+c. find the percentage contribution formula (total_amount_of_city/overall_amount * 100)
+
+with total_spends as
+	(select city, sum(amount) as total_amount
+	from credit_card_transactions
+	group by city),
+total_amount_spends as
+	(select sum(cast(amount as bigint)) as overall_total
+	from credit_card_transactions
+	)
+select total_spends.*, round(total_amount*1.0/overall_total * 100, 2) as percentage_contribution  
+from total_spends 
+inner join total_amount_spends on 1=1
+order by total_amount desc
+limit 5;
 
 
 
