@@ -2,7 +2,7 @@
 
 --Describinng dataset 
   --We have 7 columns in the dataset, 
-      -- Index, City, Date, Card Type, Expensed Type, Gender, Amount
+      -- Transaction_id, City, Date, Card Type, Expensed Type, Gender, Amount
 
 --All these problems are solved using Postgres SQL 
 
